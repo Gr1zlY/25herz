@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link href="css/style.css" type="text/css" rel="stylesheet">
+		<title>New Web Project</title>
+    </head>
+    <body>
+		<div id="wrap">
+	       <div id="head">
+				<h1>Admin Panel</h1>
+				<div class="admin-menu">
+					<ul class="menu">
+						<li><a href="#">View Site</a></li>
+						<li><a href="create_post.html">Create</a></li>
+						<li class="chosen">Manage</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div id="body">
+				<ul class="submenu">
+					<li class="chosen">Posts</li>
+					<li><a href="manage_comments.html">Comments</a></li>
+					<li><a href="manage_users.html">Users</a></li>
+				</ul>
+				<form method="post" action="">
+					<table class="create-post">
+						<tr>
+							<td colspan=4>
+								<h3>Title:</h3>
+								<input type="text" class="post-title" value="Релиз скоро!" name="post-title" id="post-title">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<h3>Link slug:</h3>
+								<input type="text" class="post-input" value="new-movie-soon" name="post-input" id="post-title">
+							</td>
+							<td>
+								<h3>Tags:</h3>
+								<input type="text" class="post-input" value="новый фильм, скоро, сенсация" name="post-input" id="post-title">
+							</td>
+							<td>
+								<h3>meta-desription:</h3>
+								<input type="text" class="post-input" value="нафига это поле я вообще не понимаю, есть доказательства, что от него будет толк?" name="post-input" id="post-title">
+							</td>
+							<td>
+								<h3>Category:</h3>
+								<select class="post-input">
+									<option>Блог</option>
+									<option>Фильмы</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+					<h3>Текст:</h3>
+					<textarea class="post-body" name="post-body" id="post-body">Спасибо за вашу любовь! Мы постараемся все офигенно замутить!</textarea>
+					<input type="submit" class="post-submit" value="Post it!" />
+				</form>
+			</div>
+			<div id="footer">
+				<p>&copy; Okspen</p>
+			</div>
+		</div>
+    </body>
+</html>

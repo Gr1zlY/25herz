@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link href="css/style.css" type="text/css" rel="stylesheet">
+		<title>New Web Project</title>
+    </head>
+    <body>
+		<div id="wrap">
+	        <div id="head">
+				<h1>Admin Panel</h1>
+				<div class="admin-menu">
+					<ul class="menu">
+						<li><a href="#">View Site</a></li>
+						<li class="chosen">Create</li>
+						<li><a href="manage_posts.html">Manage</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div id="body">
+				<ul class="submenu">
+					<li class="chosen">Post</li>
+					<li><a href="create_user.html">User</a></li>
+				</ul>
+				<form method="post" action="">
+					<table class="create-post">
+						<tr>
+							<td colspan=4>
+								<h3>Title:</h3>
+								<input type="text" class="post-title" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<h3>Link slug:</h3>
+								<input type="text" class="post-input" value="">
+							</td>
+							<td>
+								<h3>Tags:</h3>
+								<input type="text" class="post-input" value="">
+							</td>
+							<td>
+								<h3>meta-desription:</h3>
+								<input type="text" class="post-input" value="">
+							</td>
+							<td>
+								<h3>Category:</h3>
+								<select class="post-input">
+									<option>Блог</option>
+									<option>Фильмы</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+					<h3>Text:</h3>
+					<textarea class="post-body" name="post-body" id="post-body"></textarea>
+					<input type="submit" class="post-submit" value="Post it!">
+				</form>
+			</div>
+			<div id="footer">
+				<p>&copy; Okspen</p>
+			</div>
+		</div>
+    </body>
+</html>

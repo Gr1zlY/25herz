@@ -1,0 +1,168 @@
+a:visited {
+    color: #00F;
+}
+
+body {
+    font-family: Georgia;
+}
+
+#wrap {
+    margin: 0 100px;
+}
+
+/* header */
+h1 sup {
+    font-size: 14px;
+}
+
+#head h1 a{
+	text-decoration: none;
+	color: black;
+}
+
+.admin-menu ul, .submenu {
+    padding: 0;
+    list-style-type: none;
+    margin-top: 25px;
+}
+
+.menu li {
+    display: inline;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 6px;
+    background-color: rgb(240, 240, 240);
+}
+
+.menu li a:active{
+	background-color: rgb(230, 230, 230);
+	color: #000;
+}
+
+.menu li:hover, .menu li.chosen {
+    background-color: rgb(230, 230, 230);
+}
+
+.menu li.chosen a, .submenu li.chosen a {
+    color: #000;
+    text-decoration: none;
+}
+
+.submenu li {
+    display: inline;
+    font-size: 16px;
+    padding: 6px;
+}
+
+/* list (in manage section) */
+.list h4, .list_mini h4 {
+    margin: 0;
+}
+
+.list table {
+    width: 100%;
+}
+
+.list td, .list_mini td {
+    padding: 5px;
+}
+
+.list-head {
+    background: rgb(230, 230, 230);
+}
+
+.list-id {
+    width: 5%;
+    text-align: center;
+}
+
+tr.list-row:hover {
+    background-color: rgb(243, 243, 243);
+}
+
+/* actions */
+.actions a {
+    padding-left: 22px;
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.action-edit {
+    background: url(../images/edit.png) no-repeat;
+}
+
+.action-delete {
+    background: url(../images/delete.png) no-repeat;
+}
+
+/* create section */
+h3 {
+    font-weight: 100;
+    margin: 0;
+}
+
+input, textarea {
+    margin-bottom: 5px;
+}
+
+table.create-post, .post-title, .post-body {
+    width: 100%;
+}
+
+table.create-user td {
+    padding: 5px;
+}
+
+table, tr, td {
+    margin: 0px;
+    padding: 0;
+}
+
+td {
+    vertical-align: top;
+}
+
+td.name {
+    text-align: right;
+}
+
+form label {
+    width: inherit;
+    text-align: right;
+}
+
+.post-title, .post-input, .post-body {
+    padding: 5px;
+    font-size: 16px;
+    font-family: Georgia;
+}
+
+.post-input {
+    width: 90%;
+    margin-right: 5%;
+}
+
+.post-body {
+    height: 200px;
+}
+
+input.post-submit {
+    font-size: 22px;
+}
+/*Messages*/
+.message, .error{
+	margin: 10px auto;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: 5px;
+	text-align: center;
+}
+.error{
+	background: #FFBFBF;
+	border: 2px solid #FF5F5F;
+}
+.message{
+	background: #C5EB86;
+	border: 2px solid #9DDF29;
+}

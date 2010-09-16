@@ -1,0 +1,28 @@
+			<div id="body">
+				<ul class="submenu">
+					<li><?php echo anchor('admin/newpost', 'Post');?></li>
+					<li>User</li>
+				</ul>
+				<form method="post" action="">
+					<table class="create-user">
+						<tr>
+							<td class="name"><label for="user-login">Login</label></td>
+							<td><input id="user-login" type="text" value="" /></td>
+						</tr>
+						<tr>
+							<td class="name"><label for="user-name">Name</label></td>
+							<td><input id="user-name" type="text" value="" /></td>
+						</tr>
+						<tr>
+							<td class="name"><label for="user-email">Email</label></td>
+							<td><input id="user-email" type="text" value="" /></td>
+						</tr>
+						<tr>
+							<td class="name"><label for="user-password">Password</label></td>
+							<td><input id="user-password" type="password" value="" /></td>
+						</tr>
+						
+					</table>
+					<input type="submit" class="post-submit" value="Create">
+				</form>
+			</div>
