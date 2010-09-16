@@ -1,2 +1,8 @@
 This CMS is free app. Use it if you like it)
 No rights are protected by the law, just with shotgun.
+
+You can change meta tags, site description and all other seo stuff in meta.php, which is located at /application/frontend/config/
+
+As you alredy know - /application/frontend/ - is "user's" part of the site, and /application/backend/ is so-called admin panel.
+
+25herz CMS provides basic blog fuctionality, such as creating blogs, managing them, posting comments... nothing impressing.
