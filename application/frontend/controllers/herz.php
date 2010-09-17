@@ -54,8 +54,10 @@ class Herz extends MY_Controller {
 				
 						$this->load->model('comments_model');	
 								
-						if($this->form_validation->run('comment') == TRUE)
+						if($this->form_validation->run('comment') == TRUE){
 							$this->comments_model->sCreateComment($this->_comment($data['id']));
+							$this->comments_model->sIncreaseCounter($data['id']);
+						}
 
 						$this->_get_member($members, $data, TRUE);
 
@@ -133,7 +135,7 @@ class Herz extends MY_Controller {
 					return TRUE;
 				}
 				if($previews['author'] == '0'){
-					$previews['author'] = 'Anonimous';
+					$previews['author'] = 'Anonymous';
 					return TRUE;
 				}
 			}

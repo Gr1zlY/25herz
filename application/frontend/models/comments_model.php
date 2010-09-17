@@ -49,25 +49,6 @@ class Comments_model extends Model {
 		return FALSE;
 	}
 	
-	function aGetAllComments(){
-	
-		$this->db->select('id, time, name, comment, ip');
-		$this->db->order_by('time', 'desc'); 
-		$query = $this->db->get('comments');		
-		
-		if ($query->num_rows() > 0){
-			return $query->result_array();
-		}
-		return FALSE;					
-	}
-	
-	function aDeleteComment($id){
-	
-		$this->db->where('id', $id);
-		$this->db->where('parent_id', $id);
-		return $this->db->delete('comments');					
-	}
-	
 /*	function aUpdateComment($id, $data_to_insert){
 	
 		$this->db->where('id', $id);
@@ -83,5 +64,11 @@ class Comments_model extends Model {
 		
 		return $this->db->count_all_results();
 	}
-}
 
+	function sIncreaseCounter($post_id){
+		
+		$this->db->set('comments_qty', 'comments_qty + 1', FALSE);
+		$this->db->where('id' , $post_id);
+		$this->db->update('blog');
+	}
+}
