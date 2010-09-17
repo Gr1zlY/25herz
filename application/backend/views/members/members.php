@@ -19,7 +19,7 @@
 						<td><?php echo $member['email']; ?></td>
 						<td>
 							<div class="actions">
-								<!--<?php echo anchor('authorization/editmember/'.$member['id'], ' ', 'class="action-edit"');?>-->
+								<?php echo anchor('authorization/editmember/'.$member['id'], ' ', 'class="action-edit"');?>
 								<?php echo anchor('authorization/deletemember/'.$member['id'], ' ' ,'class="action-delete"');?>
 							</div>
 						</td>

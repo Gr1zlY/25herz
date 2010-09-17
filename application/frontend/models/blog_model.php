@@ -108,5 +108,15 @@ class Blog_model extends Model {
 			
 		return FALSE;
 	}
-	
+
+	function sGetMembers(){
+
+		$this->db->select('id, name');
+		$query = $this->db->get('members');
+
+		if($query->num_rows() > 0)
+			return $query->result_array();
+
+		return FALSE;
+	}
 }

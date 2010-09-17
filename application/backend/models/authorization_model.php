@@ -43,7 +43,7 @@ class Authorization_model extends Model {
 		$this->db->select('id, email, permissions, name, login');
 	
 		if(is_numeric($id))
-			$this->db->where('id', $link);
+			$this->db->where('id', $id);
 		else{
 			$this->db->where('login', $id);
 			$this->db->or_where('email', $id);
@@ -65,7 +65,7 @@ class Authorization_model extends Model {
 				'login' => $this->input->post('login'),
 				'password' => $this->input->post('password'),
 				'email' => $this->input->post('email'),
-				'permissions' => '777',				
+				'permissions' => '777'			
 			);
 		
 		$this->db->insert('members', $data);
@@ -76,12 +76,12 @@ class Authorization_model extends Model {
 	function aUpdateUser($id){
 	
 		$data = array(
-			'name' => $this->input->post('name'),
-			'login' => $this->input->post('login'),
-			'password' => $this->input->post('password'),
-			'email' => $this->input->post('email'),
-			'permissions' => '777',				
-		);
+				'name' => $this->input->post('name'),
+				'login' => $this->input->post('login'),
+				'password' => $this->input->post('password'),
+				'email' => $this->input->post('email'),
+				'permissions' => '777'
+			);
 		
 		$this->db->where('id', $id);
 		$this->db->update('members', $data);

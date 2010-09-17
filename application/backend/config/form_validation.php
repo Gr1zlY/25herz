@@ -49,7 +49,7 @@
 			),
 			array(
 				'field' => 'passconf',
-				'label' => 'Password',
+				'label' => 'Password confirmation',
 				'rules' => 'required'
 			),
 			array(
@@ -61,6 +61,33 @@
 				'field' => 'name',
 				'label' => 'Name',
 				'rules' => 'trim|required'
+			)
+		),
+		'editmember' => array(
+			array(
+				'field' => 'login',
+				'label' => 'Login',
+				'rules' => 'trim'
+			),
+			array(
+				'field' => 'password',
+				'label' => 'Password',
+				'rules' => 'matches[passconf]|md5'
+			),
+			array(
+				'field' => 'passconf',
+				'label' => 'Password confirmation',
+				'rules' => ''
+			),
+			array(
+				'field' => 'email',
+				'label' => 'Email',
+				'rules' => 'trim|valid_email'
+			),
+			array(
+				'field' => 'name',
+				'label' => 'Name',
+				'rules' => 'trim'
 			)
 		)
 	);
