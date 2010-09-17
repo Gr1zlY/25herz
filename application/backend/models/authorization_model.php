@@ -84,6 +84,7 @@ class Authorization_model extends Model {
 		);
 		
 		$this->db->where('id', $id);
+		$this->db->where('password', $this->input->post('oldpass'));
 		$this->db->update('members', $data);
 		
 		return $this->db->insert_id();

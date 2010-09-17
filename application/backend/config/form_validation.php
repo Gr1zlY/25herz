@@ -62,5 +62,32 @@
 				'label' => 'Name',
 				'rules' => 'trim|required'
 			)
+		),
+		'editmember' => array(
+			array(
+				'field' => 'login',
+				'label' => 'Login',
+				'rules' => 'trim|required|callback__checkuser'
+			),
+			array(
+				'field' => 'password',
+				'label' => 'Password',
+				'rules' => 'required|matches[passconf]|md5'
+			),
+			array(
+				'field' => 'passconf',
+				'label' => 'Password',
+				'rules' => 'required'
+			),
+			array(
+				'field' => 'email',
+				'label' => 'Email',
+				'rules' => 'trim|required|valid_email|callback__checkuser'
+			),
+			array(
+				'field' => 'name',
+				'label' => 'Name',
+				'rules' => 'trim|required'
+			)
 		)
 	);

@@ -34,41 +34,22 @@ class Authorization extends Controller {
 		$this->load->view('template', $data);
 	}
 
-	/*function profile(){
+	function editmember(){
 	
-		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+		//$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+
+		$user_id =( int)$id = (int)$this->uri->segment(3);
 		
-		if ($this->form_validation->run('profile') == FALSE){
-			
-			$data = $this->authorization_model->sGetUserAdress($this->session->userdata('id'));
-			
-			$data['title'] = 'Профиль';
-			$data['page'] = 'profile';
-			$this->load->view('test_view',$data);
-		}
-		else{
-			$data_to_db = array (			
-				'name' => $this->input->post('name'),
-				'surname' => $this->input->post('surname'),
-				'patronymic' => $this->input->post('patronymic'),
-				'postcode' => $this->input->post('postcode'),
-				'country' => $this->input->post('country'),
-				'city' => $this->input->post('city'),
-				'address' => $this->input->post('address'),
-				'phone' => $this->input->post('phone'),					
-			);
-			
-			$this->authorization_model->sUpdateUser($this->session->userdata('id'), $data_to_db);
-			unset($data_to_db);
-			
-			$data = $this->authorization_model->sGetUserAdress($this->session->userdata('id'));
-			
-			$data['title'] = 'Профиль';
-			$data['page'] = 'profile';			
-			$this->load->view('test_view',$data);
-		}
+		if ($this->form_validation->run('editprofile') != FALSE)
+			$data = $this->authorization_model->aUpdateUser($user_id);
+
+		$data = $this->authorization_model->aGetUserData($user_id);
+
+		$data['title'] = 'Профиль';
+		$data['page'] = 'members/editprofile';
+		$this->load->view('template',$data);
 	}
-	
+	/*
 	function changepassword(){
 	
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
@@ -82,12 +63,6 @@ class Authorization extends Controller {
 		$data['title'] = 'Изменение пароля';
 		$data['page'] = 'changepassword';
 		$this->load->view('test_view',$data);
-	}
-	
-	function logout(){
-	
-		$this->session->sess_destroy();  
-		redirect('');
 	}
 	*/
 	function createaccount(){
@@ -108,13 +83,6 @@ class Authorization extends Controller {
 			$this->session->set_flashdata('message', 'Аккаунт успешно создан!');
 			redirect('authorization/members');	
 		}
-		
-	}
-	
-	function editmember(){
-	
-		$id = (int)$this->uri->segment(3);
-		
 		
 	}
 	
