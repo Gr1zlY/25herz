@@ -36,18 +36,25 @@ class Authorization extends Controller {
 
 	function editmember(){
 	
-		//$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
-		$user_id =( int)$id = (int)$this->uri->segment(3);
+		$user_id = (int)$this->uri->segment(3);
 		
-		if ($this->form_validation->run('editprofile') != FALSE)
-			$data = $this->authorization_model->aUpdateUser($user_id);
+		if ($this->form_validation->run('editmember') != FALSE){
+			$this->authorization_model->aUpdateUser($user_id);
+			$this->session->set_flashdata('success', 'Настройки пользователя изменены!');
 
-		$data = $this->authorization_model->aGetUserData($user_id);
-
-		$data['title'] = 'Профиль';
-		$data['page'] = 'members/editprofile';
-		$this->load->view('template',$data);
+			redirect('authorization/members');
+		}
+		else {
+			$data = $this->authorization_model->aGetUserData($user_id);
+			if($data != FALSE){
+				$data['title'] = 'Профиль';
+				$data['page'] = 'members/editprofile';
+				$this->load->view('template',$data);
+			}
+			else show_404('page');
+		}
 	}
 	/*
 	function changepassword(){

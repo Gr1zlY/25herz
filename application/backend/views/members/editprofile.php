@@ -1,7 +1,8 @@
 <div id="body">
 	<ul class="submenu">
-		<li><?php echo anchor('admin/newpost', 'Post');?></li>
-		<li>User</li>
+		<li><?php echo anchor('admin/posts', 'Posts');?></li>
+		<li><?php echo anchor('admin/viewcomments', 'Comments');?></li>
+		<li class="chosen">Users</li>
 	</ul>
 
 	<?php echo validation_errors(); ?>
@@ -9,11 +10,11 @@
 		<table class="create-user">
 			<tr>
 				<td class="name"><label for="user-login">Login</label></td>
-				<td><?php echo form_input('login', $login,'' ,'id="user-login"'); ?></td>
+				<td><?php echo form_input('login', $login,'id="user-login"'); ?></td>
 			</tr>
 			<tr>
 				<td class="name"><label for="user-name">Name</label></td>
-				<td><?php echo form_input('name', $name, '', ' id="user-name"'); ?></td>
+				<td><?php echo form_input('name', $name, ' id="user-name"'); ?></td>
 			</tr>
 			<tr>
 				<td class="name"><label for="user-email">Email</label></td>

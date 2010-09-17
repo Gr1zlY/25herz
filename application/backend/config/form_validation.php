@@ -49,7 +49,7 @@
 			),
 			array(
 				'field' => 'passconf',
-				'label' => 'Password',
+				'label' => 'Password confirmation',
 				'rules' => 'required'
 			),
 			array(
@@ -67,27 +67,27 @@
 			array(
 				'field' => 'login',
 				'label' => 'Login',
-				'rules' => 'trim|required|callback__checkuser'
+				'rules' => 'trim'
 			),
 			array(
 				'field' => 'password',
 				'label' => 'Password',
-				'rules' => 'required|matches[passconf]|md5'
+				'rules' => 'matches[passconf]|md5'
 			),
 			array(
 				'field' => 'passconf',
-				'label' => 'Password',
-				'rules' => 'required'
+				'label' => 'Password confirmation',
+				'rules' => ''
 			),
 			array(
 				'field' => 'email',
 				'label' => 'Email',
-				'rules' => 'trim|required|valid_email|callback__checkuser'
+				'rules' => 'trim|valid_email'
 			),
 			array(
 				'field' => 'name',
 				'label' => 'Name',
-				'rules' => 'trim|required'
+				'rules' => 'trim'
 			)
 		)
 	);
