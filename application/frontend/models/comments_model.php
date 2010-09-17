@@ -10,7 +10,7 @@ class Comments_model extends Model {
 	function sCreateComment($post_id){
 
 		$data = array(
-			'name' => $this->input->post('name'),
+			'name' => ($this->input->post('name') != FALSE)?$this->input->post('name'):$this->session->userdata('name'),
 			'comment' => $this->input->post('comment'),
 			'time' => time(),
 			'ip' => $this->input->ip_address(),

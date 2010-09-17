@@ -35,6 +35,13 @@
 				'rules' => 'required|callback__check_captcha'
 			)
 		),
+		'member_comment'  => array(
+			array(
+				'field' => 'comment',
+				'label' => 'Comment',
+				'rules' => 'trim|required'
+			)
+		),
 		/*'login' => array(
             array(
                 'field' => 'login',
