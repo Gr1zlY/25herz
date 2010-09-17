@@ -29,8 +29,11 @@ class Comment_model extends Model {
 	}
 
 	protected function aGetBasicComment($id){
+		
 		$this->db->select('id, post_id');
 		$this->db->where('id', $id);
+
+		$query = $this->db->get('comments');
 		
 		if ($query->num_rows() > 0){
 			return $query->row_array();

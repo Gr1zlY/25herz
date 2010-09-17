@@ -7,9 +7,20 @@ class Comments_model extends Model {
 		parent::Model();
 	}
 	
-	function sCreateComment($data_to_insert){
+	function sCreateComment($post_id){
+
+		$data = array(
+			'name' => $this->input->post('name'),
+			'comment' => $this->input->post('comment'),
+			'time' => time(),
+			'ip' => $this->input->ip_address(),
+			'parent_id' => $this->input->post('parent_id'),
+			'post_id' => $post_id
+		);
 	
-		$this->db->insert('comments', $data_to_insert);
+		if($this->db->insert('comments', $data))
+			$this->sIncreaseCounter($data['post_id']);
+		
 		return $this->db->insert_id();
 	}
 	
@@ -48,24 +59,8 @@ class Comments_model extends Model {
 		}
 		return FALSE;
 	}
-	
-/*	function aUpdateComment($id, $data_to_insert){
-	
-		$this->db->where('id', $id);
-		$this->db->update('posts', $data_to_insert);
-		return $this->db->insert_id();
-	}
-*/
-	
-	function mGetCommentsCount($id){
-	
-		$this->db->where('post_id', $id);
-		$this->db->from('comments');
-		
-		return $this->db->count_all_results();
-	}
 
-	function sIncreaseCounter($post_id){
+	protected function sIncreaseCounter($post_id){
 		
 		$this->db->set('comments_qty', 'comments_qty + 1', FALSE);
 		$this->db->where('id' , $post_id);

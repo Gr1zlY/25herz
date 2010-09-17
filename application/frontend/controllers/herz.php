@@ -54,10 +54,8 @@ class Herz extends MY_Controller {
 				
 						$this->load->model('comments_model');	
 								
-						if($this->form_validation->run('comment') == TRUE){
+						if($this->form_validation->run('comment') == TRUE)
 							$this->comments_model->sCreateComment($this->_comment($data['id']));
-							$this->comments_model->sIncreaseCounter($data['id']);
-						}
 
 						$this->_get_member($members, $data, TRUE);
 
@@ -86,17 +84,6 @@ class Herz extends MY_Controller {
 		else{
 			$this->_loadpage($method);
 		}
-	}
-	
-	function _comment($id){
-		return array(
-			'name' => $this->input->post('name'),
-			'comment' => $this->input->post('comment'),
-			'time' => time(),
-			'ip' => $this->input->ip_address(),
-			'parent_id' => $this->input->post('parent_id'),
-			'post_id' => $id
-		);
 	}
 	
 	function _get_info(&$categories, &$members, &$previews, $post = FALSE){

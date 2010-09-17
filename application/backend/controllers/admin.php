@@ -86,6 +86,8 @@ class Admin extends Controller {
 	
 	function deletecomment(){
 
+		$this->load->model('comment_model');
+		
 		$id = (int)$this->uri->segment(3);
 		if($id == FALSE)
 			show_404('page');
