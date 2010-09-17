@@ -24,61 +24,51 @@ class Herz extends MY_Controller {
 	
 	function _loadpage($raw_category){
 		
-		try {
-	
-			$category = $this->blog_model->sGetCategoryInfo($raw_category);
+		$category = $this->blog_model->sGetCategoryInfo($raw_category);
 			
-			if($category == FALSE){
-				throw new Exception(404);				
-			}
-			else{
-				$members = $this->blog_model->sGetMembers();
+		if($category != FALSE AND $this->uri->rsegment(3) == FALSE){
 				
-				if($this->uri->rsegment(3) == FALSE){
+			$data['previews'] = $this->blog_model->sGetCategoryPreviews($category, 100, 0);
+			$this->_get_info($categories, $members, $data['previews']);
 
-					$data['previews'] = $this->blog_model->sGetCategoryPreviews($category, 100, 0);
-					$this->_get_info($categories, $members, $data['previews']);
+			$data['meta'] = $this->get_meta('index');
+			$data['page'] = 'blog/multiple';
+			$this->load->view('template', $data);
 
-					$data['meta'] = $this->get_meta('index');
-					$data['page'] = 'blog/multiple';
+		}
+		else if($category != FALSE AND $this->uri->rsegment(3) != FALSE){
+				
+				$members = $this->blog_model->sGetMembers();
+				$data = $this->blog_model->sGetPost($category['id'], $this->uri->rsegment(3));
+		
+				if($data != FALSE){
+
+					$this->load->model('comments_model');
+								
+					if($this->form_validation->run('comment') == TRUE || ($this->session->userdata('logged_in') == TRUE AND $this->form_validation->run('member_comment') == TRUE))
+						$this->comments_model->sCreateComment($data['id']);
+
+					$this->_get_member($members, $data, TRUE);
+
+					$data['captcha'] = $this->_create_captcha();
+					$data['comments'] = $this->comments_model->sGetComments($data['id']);
+			
+					$data['meta'] = $this->get_meta($data);
+					$data['page'] = 'blog/single';
 					$this->load->view('template', $data);
 				}
 				else{
-					
-					$data = $this->blog_model->sGetPost($category['id'], $this->uri->rsegment(3));
-		
-					if($data == FALSE){
-						throw new Exception(404);
-					}
-					else{
-				
-						$this->load->model('comments_model');	
-								
-						if($this->form_validation->run('comment') == TRUE || ($this->session->userdata('logged_in') == TRUE AND $this->form_validation->run('member_comment') == TRUE))
-							$this->comments_model->sCreateComment($data['id']);
-
-						$this->_get_member($members, $data, TRUE);
-
-						$data['captcha'] = $this->_create_captcha();
-						$data['comments'] = $this->comments_model->sGetComments($data['id']);
-			
-						$data['meta'] = $this->get_meta($data);
-						$data['page'] = 'blog/single';
-						$this->load->view('template', $data);
-					}
+					show_404();
 				}
-				
-			}
 		}
-		catch(Exception $e){
+		else {
 			show_404('page');
 		}
-
 	}
 	
 	function _remap($method)
 	{
-		if($method == 'index'){
+		if(function_exists($method) AND $method[0] != '_'){
 			$this->$method();
 		}
 		else{
