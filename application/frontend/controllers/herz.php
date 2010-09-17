@@ -27,6 +27,9 @@ class Herz extends MY_Controller {
 		$category = $this->blog_model->sGetCategoryInfo($raw_category);
 			
 		if($category != FALSE AND $this->uri->rsegment(3) == FALSE){
+
+			$categories = $this->blog_model->sGetCategories();
+			$members = $this->blog_model->sGetMembers();
 				
 			$data['previews'] = $this->blog_model->sGetCategoryPreviews($category, 100, 0);
 			$this->_get_info($categories, $members, $data['previews']);
@@ -68,7 +71,7 @@ class Herz extends MY_Controller {
 	
 	function _remap($method)
 	{
-		if(function_exists($method) AND $method[0] != '_'){
+		if(method_exists($this, $method) AND $method[0] != '_'){
 			$this->$method();
 		}
 		else{
