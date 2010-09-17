@@ -48,7 +48,7 @@ class Herz extends MY_Controller {
 
 					$this->load->model('comments_model');
 								
-					if($this->form_validation->run('comment') == TRUE || ($this->session->userdata('logged_in') == TRUE AND $this->form_validation->run('member_comment') == TRUE))
+					if($this->form_validation->run( ($this->session->userdata('logged_in') == TRUE)?'member_comment':'comment') == TRUE)
 						$this->comments_model->sCreateComment($data['id']);
 
 					$this->_get_member($members, $data, TRUE);

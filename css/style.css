@@ -197,6 +197,10 @@ ul.commentsList .commentsList {
 	color:#fff;
 }
 
+.child_comment{
+	padding-left: 30px;
+}
+
 /* movie list */
 .movieList {
 	margin:0;
