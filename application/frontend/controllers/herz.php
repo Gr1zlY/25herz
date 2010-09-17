@@ -13,13 +13,9 @@ class Herz extends MY_Controller {
 	{
 		$data['previews'] = $this->blog_model->sGetPreviews(100, 0);
 		$categories = $this->blog_model->sGetCategories();
+		$members = $this->blog_model->sGetMembers();
 
-		if($data['previews'] != FALSE){
-			$i_max = count($data['previews']);
-			for($i = 0; $i < $i_max; $i++){
-				$data['previews'][$i]['category'] = $this->_get_category($categories, $data['previews'][$i]['category']);
-			}
-		}
+		$this->_get_info($categories, $members, $data['previews']);
 		
 		$data['meta'] = $this->get_meta('index');
 		$data['page'] = 'blog/multiple';
@@ -36,9 +32,12 @@ class Herz extends MY_Controller {
 				throw new Exception(404);				
 			}
 			else{
+				$members = $this->blog_model->sGetMembers();
+				
 				if($this->uri->rsegment(3) == FALSE){
 
 					$data['previews'] = $this->blog_model->sGetCategoryPreviews($category, 100, 0);
+					$this->_get_info($categories, $members, $data['previews']);
 
 					$data['meta'] = $this->get_meta('index');
 					$data['page'] = 'blog/multiple';
@@ -57,7 +56,9 @@ class Herz extends MY_Controller {
 								
 						if($this->form_validation->run('comment') == TRUE)
 							$this->comments_model->sCreateComment($this->_comment($data['id']));
-							
+
+						$this->_get_member($members, $data, TRUE);
+
 						$data['captcha'] = $this->_create_captcha();
 						$data['comments'] = $this->comments_model->sGetComments($data['id']);
 			
@@ -96,14 +97,47 @@ class Herz extends MY_Controller {
 		);
 	}
 	
-	function _get_category($categories, $id){
-	
-		$i_max = count($categories);
-		for($i = 0; $i < $i_max; $i++){
-			if($id == $categories[$i]['id'])
-				return $categories[$i]['clink'];
+	function _get_info(&$categories, &$members, &$previews, $post = FALSE){
+
+		if($post == FALSE AND $previews != FALSE){
+			for($i = 0, $i_max = count($previews); $i < $i_max; $i++){
+				$this->_get_info($categories, $members, $previews[$i], TRUE);
+			}
 		}
-		
+		else if($previews != FALSE){
+			$i_max = max(count($categories), count($members));
+			for($i = 0; $i < $i_max; $i++){
+				if($previews['category'] == $categories[$i]['id'])
+					$previews['category'] = $categories[$i]['clink'];
+				if($previews['author'] == $members[$i]['id'])
+					$previews['author'] = $members[$i]['name'];
+				if($previews['author'] == '0')
+					$previews['author'] = 'Anonimous';
+			}
+		}
+		return FALSE;
+	}
+
+	function _get_member($members, &$previews, $post = FALSE){
+
+		if($post == FALSE AND $previews != FALSE){
+			for($i = 0, $i_max = count($previews); $i < $i_max; $i++){
+				$this->_get_info($members, $previews[$i], TRUE);
+			}
+		}
+		else if($previews != FALSE){
+			$i_max = count($members);
+			for($i = 0; $i < $i_max; $i++){
+				if($previews['author'] == $members[$i]['id']){
+					$previews['author'] = $members[$i]['name'];
+					return TRUE;
+				}
+				if($previews['author'] == '0'){
+					$previews['author'] = 'Anonimous';
+					return TRUE;
+				}
+			}
+		}
 		return FALSE;
 	}
 }
