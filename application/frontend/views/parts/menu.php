@@ -5,6 +5,6 @@
 		</li>
 	<?php endforeach; ?>
 	<li>
-		<a href="">О нас</a>
+		<a href="">О нас (test)</a>
 	</li>
 </ul>
