@@ -15,10 +15,10 @@
 					//plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,imagemanager,filemanager",
 					theme : "advanced",
 					theme_advanced_toolbar_location : "top",
-					theme_advanced_toolbar_align : "center",
+					theme_advanced_toolbar_align : "left",
 					theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,fontsizeselect,cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,cleanup",
 					theme_advanced_buttons2 : "",
-					content_css : "<?php echo base_url();?>../css/style.css"
+					content_css : "<?php echo base_url();?>../css/tinymce.css"
 				});
 			});
 		</script>
