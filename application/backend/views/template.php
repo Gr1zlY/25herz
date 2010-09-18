@@ -26,8 +26,10 @@
 	<body>
 		<div id="wrap">
 			<div id="head">
-				<h1><?php echo anchor('', 'Admin panel');?></h1>
-				<span><?php echo anchor('authorization/logout', 'Logout');?></span>
+				<table><tr>
+					<td><h1><?php echo anchor('', 'Admin panel');?></h1></td>
+					<td><span><?php echo anchor('authorization/logout', 'Logout');?></span></td>
+				</tr></table>			
 				<?php $this->load->view('parts/messages'); ?>
 				<?php $this->load->view('menu'); ?>	
 			</div>

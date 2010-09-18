@@ -11,9 +11,22 @@ body {
 }
 
 /* header */
+h1 {
+	display:inline;
+}
+
 h1 sup {
     font-size: 14px;
 }
+
+#head table td {
+	vertical-align:middle;
+}
+
+#head span {
+	margin-left:24px;
+}
+
 
 #head h1 a{
 	text-decoration: none;
