@@ -89,5 +89,29 @@
 				'label' => 'Name',
 				'rules' => 'trim'
 			)
-		)
+		),
+	    	'newcategory' => array(
+			array(
+				'field' => 'ctitle',
+				'label' => 'Title',
+				'rules' => 'trim|required'
+			),
+			array(
+				'field' => 'clink',
+				'label' => 'Link',
+				'rules' => 'trim|required|callback__checklink'
+			),
+		),
+	    	'category' => array(
+			array(
+				'field' => 'ctitle',
+				'label' => 'Title',
+				'rules' => 'trim|required'
+			),
+			array(
+				'field' => 'clink',
+				'label' => 'Link',
+				'rules' => 'trim|required'
+			),
+		),
 	);

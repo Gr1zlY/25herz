@@ -3,6 +3,7 @@
 		<li><?php echo anchor('admin/posts', 'Posts');?></li>
 		<li><?php echo anchor('admin/viewcomments', 'Comments');?></li>
 		<li class="chosen">Users</li>
+		<li><?php echo anchor('category', 'Categories');?></li>
 	</ul>
 
 	<div class="list">

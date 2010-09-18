@@ -87,13 +87,18 @@ class Herz extends MY_Controller {
 			}
 		}
 		else if($previews != FALSE){
-			$i_max = max(count($categories), count($members));
+
+			$num_categories = count($categories);
+			$num_members =  count($members);
+
+			$i_max = max($num_categories, $num_members);
+			
 			for($i = 0; $i < $i_max; $i++){
-				if($previews['category'] == $categories[$i]['id'])
+				if( $i< $num_categories AND ($previews['category'] == $categories[$i]['id']))
 					$previews['category'] = $categories[$i]['clink'];
-				if($previews['author'] == $members[$i]['id'])
+				if($i < $num_members AND $previews['author'] == $members[$i]['id'])
 					$previews['author'] = $members[$i]['name'];
-				if($previews['author'] == '0')
+				if($i <$num_members AND $previews['author'] == '0')
 					$previews['author'] = 'Anonimous';
 			}
 		}

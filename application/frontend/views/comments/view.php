@@ -11,6 +11,7 @@
 			//$(appsel).children(".commentForm").remove();
 			//comment_form = $("form").html();
 			appsel = current;
+			
 			id = appsel.attr('class').replace('/[^0-9]/g', '');
 			alert(id);
 			/*id = appsel.attr('class').replace("comment","").replace("child_comment","");

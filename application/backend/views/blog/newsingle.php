@@ -2,6 +2,7 @@
 	<ul class="submenu">
 		<li class="chosen">Post</li>
 		<li><?php echo anchor('authorization/createaccount', 'User');?></li>
+		<li><?php echo anchor('category/newcategory', 'Category');?></li>
 	</ul>
 
   	<?php echo validation_errors(); ?>

@@ -2,6 +2,7 @@
 	<ul class="submenu">
 		<li><?php echo anchor('admin/newpost', 'Post');?></li>
 		<li>User</li>
+		<li><?php echo anchor('category/newcategory', 'Category');?></li>
 	</ul>
 
 	<?php echo validation_errors(); ?>
