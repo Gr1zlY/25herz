@@ -26,11 +26,10 @@
 	<body>
 		<div id="wrap">
 			<div id="head">
-
-				<h1><?php echo anchor('', 'Admin Panel');?></h1>
+				<h1><?php echo anchor('', 'Admin panel');?></h1>
+				<span><?php echo anchor('authorization/logout', 'Logout');?></span>
 				<?php $this->load->view('parts/messages'); ?>
 				<?php $this->load->view('menu'); ?>	
-
 			</div>
 
 			<?php if(isset($page) AND $page != FALSE): ?>
