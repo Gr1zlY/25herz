@@ -17,7 +17,7 @@ class Comments_model extends Model {
 			'parent_id' => $this->input->post('parent_id'),
 			'post_id' => $post_id
 		);
-	
+		
 		if($this->db->insert('comments', $data))
 			$this->sIncreaseCounter($data['post_id']);
 		

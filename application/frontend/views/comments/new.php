@@ -2,11 +2,14 @@
 
 <div class="commentForm">
 	<h2>оставьте комментарий:</h2>
-	<?php echo form_open(current_url()); ?>
+	<?php echo form_open(current_url());?>
+	<?php echo form_input(array('type'=>'hidden', 'name'=>'parent_id', 'id'=>'parent-id')); ?>
+	
 	<table>
 		<?php if($this->session->userdata('logged_in') != TRUE): ?>
 		<tr><td>	
-			<?php echo form_input('name', set_value('name')); ?><?php echo form_label('name','name'); ?>
+			<?php echo form_input('name', set_value('name')); ?>
+			<?php echo form_label('name','name'); ?>
 		</td></tr>
 		<tr><td>
 			<?php $this->load->view('comments/captcha');?>
