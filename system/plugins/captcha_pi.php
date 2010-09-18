@@ -220,10 +220,10 @@ function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = 
 	
    if ($word == '')
    {
-		$pool = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ';
+		$pool = '123456789abcdefghijklmnopqrstuvwxyz';
 
 		$str = '';
-		for ($i = 0; $i < 8; $i++)
+		for ($i = 0; $i < 4; $i++)
 		{
 			$str .= substr($pool, mt_rand(0, strlen($pool) -1), 1);
 		}
@@ -258,10 +258,16 @@ function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = 
 	//  Assign colors
 	// -----------------------------------
 	
-	$bg_color		= imagecolorallocate ($im, 255, 255, 255);
+//	$bg_color		= imagecolorallocate ($im, 255, 255, 255);
+//	$border_color	= imagecolorallocate ($im, 153, 102, 102);
+//	$text_color		= imagecolorallocate ($im, 204, 153, 153);
+//	$grid_color		= imagecolorallocate($im, 255, 182, 182);
+//	$shadow_color	= imagecolorallocate($im, 255, 240, 240);
+	
+	$bg_color		= imagecolorallocate ($im, 40, 40, 40);
 	$border_color	= imagecolorallocate ($im, 153, 102, 102);
-	$text_color		= imagecolorallocate ($im, 204, 153, 153);
-	$grid_color		= imagecolorallocate($im, 255, 182, 182);
+	$text_color		= imagecolorallocate ($im, 181, 181, 181);
+	$grid_color		= imagecolorallocate($im, 75, 75, 75);
 	$shadow_color	= imagecolorallocate($im, 255, 240, 240);
 
 	// -----------------------------------
@@ -302,13 +308,13 @@ function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = 
 		
 	if ($use_font == FALSE)
 	{
-		$font_size = 5;
+		$font_size = 8;
 		$x = rand(0, $img_width/($length/3));
 		$y = 0;
 	}
 	else
 	{
-		$font_size	= 16;
+		$font_size	= 8;
 		$x = rand(0, $img_width/($length/1.5));
 		$y = $font_size+2;
 	}
@@ -334,7 +340,7 @@ function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = 
 	//  Create the border
 	// -----------------------------------
 
-	imagerectangle($im, 0, 0, $img_width-1, $img_height-1, $border_color);		
+	//imagerectangle($im, 0, 0, $img_width-1, $img_height-1, $border_color);		
 
 	// -----------------------------------
 	//  Generate the image
