@@ -1,267 +1,277 @@
 @CHARSET "UTF-8";
 body {
-	width:95%;
-	min-width:850px;
-	margin:0 auto;
-	background: #282828;
-	color: #fff;
+    width: 95%;
+    min-width: 850px;
+    margin: 0 auto;
+    background: #282828;
+    color: #fff;
 }
 
 body, textarea {
-	font-family: Verdana, Helvetica, sans-serif;
+    font-family: Verdana, Helvetica, sans-serif;
 }
 
 a:link, a:visited {
-	color: #fff;
+    color: #fff;
 }
 
 #leftCol, #rightCol {
-	margin-top:30px;
+    margin-top: 30px;
 }
 
 #leftCol {
-	float:left;
-	margin-left:5%;
+    float: left;
+    margin-left: 5%;
 }
 
 #rightCol {
-	float:left;
-	margin-left:20px;
-	width:70%;
+    float: left;
+    margin-left: 20px;
+    width: 70%;
 }
 
 h1, h2, li {
-	font-weight: 100;
+    font-weight: 100;
 }
 
 /* header styles */
 #logo {
-	color: #fff;
+    color: #fff;
 }
 
 #leftCol h1 {
-	font-size:28px;
-	letter-spacing:12px;
+    font-size: 28px;
+    letter-spacing: 12px;
 }
 
-#leftCol h1 a{
-	text-decoration: none!important;
+#leftCol h1 a {
+    text-decoration: none !important;
 }
-
 
 /* content styles */
-
 #mainMenu {
-	float:left;
-	list-style-type:none;
-	padding:0;
-	width: 100%;
+    float: left;
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
 }
 
 #mainMenu li {
-	float:left;
-	font-size:22px;
-	letter-spacing:6px;
-	margin:4px 18px 0 0;
-	padding:2px 6px 4px 10px;
-	background:	#606060;
+    float: left;
+    font-size: 22px;
+    letter-spacing: 6px;
+    margin: 4px 18px 0 0;
+    padding: 2px 6px 4px 10px;
+    background: #606060;
 }
 
-#mainMenu li.selected{
-	color: #fff;
-	background: #444444;
+#mainMenu li.selected {
+    color: #fff;
+    background: #444444;
 }
 
-#mainMenu li a{
-	position:relative;
-	text-decoration:none;
-	z-index:2;
+#mainMenu li a {
+    position: relative;
+    text-decoration: none;
+    z-index: 2;
 }
 
 #content {
-	float:left;
+    float: left;
 }
 
 #blogContent {
 }
 
-#footer{
-	margin-left:5%;
-	clear:both;
-	font-size:12px;
-	height:36px;
+#footer {
+    margin-left: 5%;
+    clear: both;
+    font-size: 12px;
+    height: 36px;
 }
 
 #copyright {
-	float:left;
+    float: left;
 }
 
 #mailto {
-	float:right;
-	text-align:right;
+    float: right;
+    text-align: right;
 }
+
 /* post styles */
 .post, .movie {
-	margin-bottom:30px;
-	min-width:400px;
-	overflow:hidden;
+    margin-bottom: 30px;
+    min-width: 400px;
+    overflow: hidden;
 }
+
 .post h2, .movie h2 {
-	font-size:22px;
-	margin:0 0 12px 0;
+    font-size: 22px;
+    margin: 0 0 12px 0;
 }
 
 .post .postContent, .movieInfo dd {
-	color:#dcdcdc;
+    color: #dcdcdc;
 }
 
 .post .postContent {
-	margin-top:15px;
-	font-size:14px;
-	line-height:130%;
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 130%;
 }
 
 .meta span, .meta a {
-	color:#b5b5b5;
-	text-decoration:none;
+    color: #b5b5b5;
+    text-decoration: none;
 }
 
-.meta span{
-	display:inline;
-	font-size:12px;
-	padding: 2px 6px;
-	background: #4b4b4b;
+.meta span {
+    display: inline;
+    font-size: 12px;
+    padding: 2px 6px;
+    background: #4b4b4b;
 }
 
 .meta span.comments:hover {
-	background: #5f5f5f;
+    background: #5f5f5f;
 }
 
 /* comments */
 #comments {
-	margin-top:10px;
-	clear:both;
+    margin-top: 10px;
+    clear: both;
 }
+
 #comments h2, #comments label {
-	color:#d7d7d7;
+    color: #d7d7d7;
 }
 
 #comments h2 {
-	font-size:18px;
+    font-size: 18px;
 }
+
 #comments label {
-	font-size:14px;
-	margin-left:6px;
+    font-size: 14px;
+    margin-left: 6px;
 }
 
 /* comments list */
-
 ul.commentsList {
-	position:relative;
-	clear:both;
-	margin-left:0px;
-	padding:0px;
-	list-style-type:none;
+    position: relative;
+    clear: both;
+    margin-left: 0px;
+    padding: 0px;
+    list-style-type: none;
 }
 
 ul.commentsList .commentsList {
-	margin-left:24px;
+    margin-left: 24px;
 }
 
 .commentContent p {
-	margin-top:5px;
-	font-size:14px;
+    margin-top: 5px;
+    font-size: 14px;
 }
 
 /* comment form */
-
 .commentForm * {
-	margin-bottom:8px;
+    margin-bottom: 4px;
+}
+
+.commentForm table {
+	width:100%;
 }
 
 .commentForm input, .commentForm textarea {
-	border:none;
-	padding:4px;
-	font-size:14px;
+    border: none;
+    padding: 4px;
+    font-size: 14px;
 }
+
 .commentForm input {
-	width:150px;
-	background: #d7d7d7;
+    width: 150px;
+    background: #d7d7d7;
 }
+
 .commentForm textarea {
-	width:100%;
-	background: #d7d7d7;
+    width: 100%;
+    background: #d7d7d7;
 }
 
 .commentForm #send {
-	width:80px;
-	background: #444;
-	color:#fff;
+    width: 80px;
+    background: #444;
+    color: #fff;
 }
 
-.child_comment{
-	padding-left: 30px;
+.child_comment {
+    padding-left: 30px;
 }
 
 /* movie list */
 .movieList {
-	margin:0;
-	padding:0;
+    margin: 0;
+    padding: 0;
 }
 
-.movieList li{
-	list-style-type:none;
-	margin:0;
-	padding:0;
+.movieList li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .moviePoster {
-	float: left;
-	width: 200px;	
+    float: left;
+    width: 200px;
 }
 
-.movieList .moviePoster{
-	width: 100px;
+.movieList .moviePoster {
+    width: 100px;
 }
 
 .moviePoster img {
-	border:3px #444 solid;
+    border: 3px #444 solid;
 }
 
 .movieInfo {
-	margin-left:230px;
+    margin-left: 230px;
 }
 
 .movieList .movieInfo {
-	margin-left:130px;
+    margin-left: 130px;
 }
 
 .movieInfo dl {
-	margin:0;
+    margin: 0;
 }
+
 .movieInfo dt {
-	font-size:12px;
-	color:#969696;
+    font-size: 12px;
+    color: #969696;
 }
 
 .movieInfo dd {
-	font-size:15px;
-	margin-left:0;
-	margin-bottom:10px;
+    font-size: 15px;
+    margin-left: 0;
+    margin-bottom: 10px;
 }
 
 .movieInfo dd a:active, .movieInfo dd a:visited {
-	color:#afafaf;
+    color: #afafaf;
 }
 
 .movieInfo dd a:hover {
-	color:#d7d7d7;
+    color: #d7d7d7;
 }
 
 .movieInfo dd img {
-	border:0;
+    border: 0;
 }
+
 /*additional info*/
-.cleanup{
-	clear: both;
+.cleanup {
+    clear: both;
+	margin:0;
+	padding:0;
 }

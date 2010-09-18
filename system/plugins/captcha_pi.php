@@ -153,7 +153,7 @@ Then, on the page that accepts the submission you'll have something like this:
 */
 function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = '')
 {		
-	$defaults = array('word' => '', 'img_path' => '', 'img_url' => '', 'img_width' => '150', 'img_height' => '30', 'font_path' => '', 'expiration' => 7200);		
+	$defaults = array('word' => '', 'img_path' => '', 'img_url' => '', 'img_width' => '150', 'img_height' => '20', 'font_path' => '', 'expiration' => 7200);		
 	
 	foreach ($defaults as $key => $val)
 	{
@@ -308,14 +308,14 @@ function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = 
 		
 	if ($use_font == FALSE)
 	{
-		$font_size = 8;
-		$x = rand(0, $img_width/($length/3));
+		$font_size = 10;
+		$x = rand(10, $img_width/($length/1.5));
 		$y = 0;
 	}
 	else
 	{
-		$font_size	= 8;
-		$x = rand(0, $img_width/($length/1.5));
+		$font_size	= 10;
+		$x = rand(10, $img_width/$length);
 		$y = $font_size+2;
 	}
 
@@ -323,13 +323,13 @@ function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = 
 	{
 		if ($use_font == FALSE)
 		{
-			$y = rand(0 , $img_height/2);
+			$y = rand(0 , $img_height/2-$font_size);
 			imagestring($im, $font_size, $x, $y, substr($word, $i, 1), $text_color);
 			$x += ($font_size*2);
 		}
 		else
 		{		
-			$y = rand($img_height/2, $img_height-3);
+			$y = rand($img_height/2, $img_height-$font_size);
 			imagettftext($im, $font_size, $angle, $x, $y, $text_color, $font_path, substr($word, $i, 1));
 			$x += $font_size;
 		}
