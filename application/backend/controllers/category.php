@@ -71,6 +71,15 @@ class Category extends Controller {
 		}
 	}
 
+	function _checklink($link){
+		$this->form_validation->set_message('_checklink', 'Категория с такой %s уже существует');
+
+		if(!$this->category_model->aCheckLink($link)){
+			return TRUE;
+		}
+		return FALSE;
+	}
+
 	function _remap($method)
 	{
 		if($this->session->userdata('logged_in') == TRUE){

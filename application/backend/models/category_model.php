@@ -67,20 +67,17 @@ class Category_model extends Model {
 		return FALSE;
 	}
 
-	/*function sGetCategoryID($link){
+	function aCheckLink($link){
 
-		$this->db->select('id');
-
-		if(is_numeric($link))
-			return $link;
-		else
-			$this->db->where('clink', $link);
+		$this->db->where('clink', $link);
 
 		$query = $this->db->get('categories');
 
-		return ($query->num_rows() > 0) ? $query->row()->id : FALSE;
+		if($query->num_rows() > 0){
+			return TRUE;
+		}
+		return FALSE;
 	}
-	*/
 
 
 }
