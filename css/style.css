@@ -138,23 +138,24 @@ h1, h2, li {
 }
 
 /* comments */
-.comments {
+#comments {
 	margin-top:10px;
 	clear:both;
 }
-.comments h2, .comments label {
+#comments h2, #comments label {
 	color:#d7d7d7;
 }
 
-.comments h2 {
+#comments h2 {
 	font-size:18px;
 }
-.comments label {
+#comments label {
 	font-size:14px;
 	margin-left:6px;
 }
 
 /* comments list */
+
 ul.commentsList {
 	position:relative;
 	clear:both;
@@ -173,6 +174,7 @@ ul.commentsList .commentsList {
 }
 
 /* comment form */
+
 .commentForm * {
 	margin-bottom:8px;
 }
@@ -183,7 +185,7 @@ ul.commentsList .commentsList {
 	font-size:14px;
 }
 .commentForm input {
-	width:125px;
+	width:150px;
 	background: #d7d7d7;
 }
 .commentForm textarea {

@@ -21,6 +21,7 @@
 		});
 	});
 </script>
+
 <ul class="commentsList">
 
 	<?php if(isset($comments) AND $comments != FALSE):?>
