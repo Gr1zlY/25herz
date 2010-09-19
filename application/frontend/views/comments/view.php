@@ -54,6 +54,6 @@
 		<?php } ?>
 		</ul>
 <?php }	?>
-	
+<h2>обсуждение (<?php echo count($comments); ?>)</h2>
 <?php ok_comment_draw_recursively($comments, 0); ?>
 <?php endif;?>
