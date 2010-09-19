@@ -175,7 +175,7 @@ ul.commentsList .commentsList {
 }
 
 /* comment form */
-.commentForm * {
+.commentForm *, #newComment {
     margin-bottom: 4px;
 }
 
@@ -203,10 +203,6 @@ ul.commentsList .commentsList {
     width: 80px;
     background: #444;
     color: #fff;
-}
-
-.child_comment {
-    padding-left: 30px;
 }
 
 /* movie list */
