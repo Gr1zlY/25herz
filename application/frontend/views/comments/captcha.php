@@ -1,9 +1,5 @@
-<div id = "captcha">
-	<div id = "captcha_image">
-		<?php echo $captcha['image']; ?>
-	</div>
-	<div id = "captcha_text">
-		<?php echo form_input('captcha', '', 'class = "input"'); ?>
-	</div>
-</div>
+<?php echo $captcha['image']; ?><br>
+<?php echo form_input('captcha', '', 'class = "input"'); ?>
+<?php echo form_label('captcha'); ?>
+	
 <div class = "cleanup"></div>
