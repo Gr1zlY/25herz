@@ -24,5 +24,5 @@
 				'label' => 'Comment',
 				'rules' => 'trim|required'
 			)
-		),
+		)
 	);

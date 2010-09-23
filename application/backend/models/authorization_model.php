@@ -78,10 +78,11 @@ class Authorization_model extends Model {
 		$data = array(
 				'name' => $this->input->post('name'),
 				'login' => $this->input->post('login'),
-				'password' => $this->input->post('password'),
 				'email' => $this->input->post('email'),
 				'permissions' => '777'
 			);
+		if($this->input->post('password') != FALSE)
+			$data['password'] = $this->input->post('password');
 		
 		$this->db->where('id', $id);
 		$this->db->update('members', $data);
@@ -89,7 +90,7 @@ class Authorization_model extends Model {
 		return $this->db->insert_id();
 	}
 	
-	function sChangePassword($email, $oldpass, $newpass){
+	/*function sChangePassword($email, $oldpass, $newpass){
 		
 		$this->db->select('id');
 	
@@ -109,7 +110,7 @@ class Authorization_model extends Model {
 			return TRUE;
 		}
 		return FALSE;
-	}
+	}*/
 	
 	function aDeleteUser($id){
 		$this->db->where('id', $id);
