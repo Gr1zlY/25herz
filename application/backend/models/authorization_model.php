@@ -9,15 +9,19 @@ class Authorization_model extends Model {
 	
 	function Authorize($login, $password){
 	
+		$this->load->helper('email');
 		$this->db->select('id, email, permissions, name, login');
 	
 		//$where = "(login='$login' AND password='$password') OR (email='$login' AND password='$password')";
 		//$this->db->where($where);
 		//$this->db->or_where('login', $login);
 		
-		$this->db->where('email', $login);		
+		if(valid_email($login))
+			$this->db->where('email', $login);	
+		else $this->db->where('login', $login);
+		
 		$this->db->where('password', $password);
-
+		
 		$query = $this->db->get('members', 1);
 
 		if($query->num_rows() > 0)		
