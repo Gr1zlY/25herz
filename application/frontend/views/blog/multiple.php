@@ -14,5 +14,9 @@
 				</div>				
 			</div>
 		<?php endforeach; ?>
+
+		<div id ="pagination">
+			<?php echo $this->pagination->create_links(); ?>
+		</div>
 	<?php endif;?>
 </div>

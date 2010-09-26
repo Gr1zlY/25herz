@@ -5,15 +5,24 @@ class Herz extends MY_Controller {
 	function Herz()
 	{
 		parent::MY_Controller();
-		
-		 $this->load->scaffolding('categories');	
+
+				$this->load->library('pagination');
+
 	}
 	
 	function index()
 	{
+
+		$config['base_url'] = site_url('index');
+		$config['total_rows'] = $this->blog_model->sGetNumPosts('1');
+		$config['per_page'] = '1';
+		$config['uri_segment'] = 2;
+
+		$this->pagination->initialize($config); 
+		
 		//$data['previews'] = $this->blog_model->sGetPreviews(100, 0);
 		/*We are getting just 'blog' comments*/
-		$data['previews'] = $this->blog_model->sGetCategoryPreviews(array('id' => '1', 'clink' => 'blog'), 100, 0);
+		$data['previews'] = $this->blog_model->sGetCategoryPreviews(array('id' => '1', 'clink' => 'blog'), $config['per_page'], $this->uri->segment(2));
 		$categories = $this->blog_model->sGetCategories();
 		$members = $this->blog_model->sGetMembers();
 
