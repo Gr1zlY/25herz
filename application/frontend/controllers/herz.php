@@ -13,7 +13,7 @@ class Herz extends MY_Controller {
 	{
 		//$data['previews'] = $this->blog_model->sGetPreviews(100, 0);
 		/*We are getting just 'blog' comments*/
-		$data['previews'] = $this->blog_model->sGetCategoryPreviews('blog', 100, 0);
+		$data['previews'] = $this->blog_model->sGetCategoryPreviews(array('id' => '1'), 100, 0);
 		$categories = $this->blog_model->sGetCategories();
 		$members = $this->blog_model->sGetMembers();
 
