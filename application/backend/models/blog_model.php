@@ -30,7 +30,8 @@ class Blog_model extends Model {
 			'category' => $this->input->post('categories'),
 			'post' => $this->input->post('post'),
 			'preview' => $this->input->post('preview'),
-			'author' =>$this->session->userdata('id')
+			'author' =>$this->session->userdata('id'),
+			'time' => time()
 		);
 		
 		$this->db->insert('blog', $post);

@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="<?php echo base_url(); ?>../css/admin-style.css" type="text/css">
 		<script src="<?php echo base_url(); ?>../js/jquery.js" type="text/javascript"></script>
 		<script src="<?php echo base_url(); ?>../js/tiny_mce/jquery.tinymce.js" type="text/javascript"></script>
+		<script src="<?php echo base_url(); ?>../js/jquery.synctranslit.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
 

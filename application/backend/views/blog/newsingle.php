@@ -7,6 +7,11 @@
 
   	<?php echo validation_errors(); ?>
 	<?php echo form_open(current_url()); ?>
+		<script>
+			$(document).ready(function(){
+				$("input[name='title']").syncTranslit({destination: 'linkslug'});
+			});
+		</script>
 		<table class="create-post">
 			<tr>
 				<td colspan=4>
@@ -17,7 +22,7 @@
 			<tr>
 				<td>
 					<h3>Link slug:</h3>
-					<?php echo form_input('link','','class="post-input"'); ?>
+					<?php echo form_input('link','','class="post-input" id = "linkslug"'); ?>
 				</td>
 				<td>
 					<h3>Tags:</h3>
