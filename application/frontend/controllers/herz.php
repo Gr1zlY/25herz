@@ -16,13 +16,13 @@ class Herz extends MY_Controller {
 		$config['base_url'] = site_url('');
 		$config['total_rows'] = $this->blog_model->sGetNumPosts('1');
 		$config['per_page'] = '3';
-		$config['uri_segment'] = 2;
+		$config['uri_segment'] = 1;
 
 		$this->pagination->initialize($config); 
 		
 		//$data['previews'] = $this->blog_model->sGetPreviews(100, 0);
 		/*We are getting just 'blog' comments*/
-		$data['previews'] = $this->blog_model->sGetCategoryPreviews(array('id' => '1', 'clink' => 'blog'), $config['per_page'], $config['per_page']*$this->_getpage(2));
+		$data['previews'] = $this->blog_model->sGetCategoryPreviews(array('id' => '1', 'clink' => 'blog'), $config['per_page'], $config['per_page']*$this->_getpage(1));
 		$categories = $this->blog_model->sGetCategories();
 		$members = $this->blog_model->sGetMembers();
 
@@ -46,6 +46,7 @@ class Herz extends MY_Controller {
 	}
 
 	function viewcategory(){
+		
 		$category = $this->blog_model->sGetCategoryInfo($this->uri->segment(1));
 		$page = $this->_getpage($this->uri->segment(2));
 
@@ -96,10 +97,6 @@ class Herz extends MY_Controller {
 		else{
 			show_404();
 		}
-	}
-
-	function page(){
-		echo $this->_getpage($this->uri->segment(2));
 	}
 	
 	function _remap($method)
