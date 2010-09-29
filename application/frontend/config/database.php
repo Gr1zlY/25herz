@@ -38,9 +38,9 @@ $active_group = "default";
 $active_record = TRUE;
 
 $db['default']['hostname'] = "localhost";
-$db['default']['username'] = "25herz";
-$db['default']['password'] = "123123";
-$db['default']['database'] = "herz";
+$db['default']['username'] = "root";
+$db['default']['password'] = "";
+$db['default']['database'] = "a25herzc_25hzDB";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "ci_";
 $db['default']['pconnect'] = TRUE;

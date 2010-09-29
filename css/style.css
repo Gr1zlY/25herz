@@ -201,8 +201,9 @@ ul.commentsList .commentsList {
 
 .commentForm #send {
     width: 80px;
-    background: #444;
     color: #fff;
+	background: #444;
+	cursor:pointer;
 }
 
 /* movie list */
