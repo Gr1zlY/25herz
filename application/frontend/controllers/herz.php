@@ -15,7 +15,7 @@ class Herz extends MY_Controller {
 
 		$config['base_url'] = site_url('index');
 		$config['total_rows'] = $this->blog_model->sGetNumPosts('1');
-		$config['per_page'] = '1';
+		$config['per_page'] = '10';
 		$config['uri_segment'] = 2;
 
 		$this->pagination->initialize($config); 
