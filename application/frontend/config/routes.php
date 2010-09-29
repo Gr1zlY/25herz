@@ -44,8 +44,8 @@ $route['default_controller'] = 'Herz';
 $route['scaffolding_trigger'] = '';
 
 
-$route['(:any)/page[0-9]'] = "herz/page/$1";
-$route['page[0-9]'] = "herz/page/$0";
+$route['(:any)/page(:num)'] = "herz/viewcategory/$0/$1";
+$route['page(:num)'] = "herz/page/$0";
 $route['^(?!page[0-9]).*'] = "herz/$0";
 
 //$route['^(?!login).*'] = "herz/$0";

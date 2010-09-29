@@ -16,7 +16,7 @@
 		<?php endforeach; ?>
 
 		<div id ="pagination">
-			<?php echo $this->pagination->create_links(); ?>
+			<?php echo $this->pagination->create_links(FALSE); ?>
 		</div>
 	<?php endif;?>
 </div>

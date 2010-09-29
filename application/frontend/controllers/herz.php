@@ -15,14 +15,14 @@ class Herz extends MY_Controller {
 
 		$config['base_url'] = site_url('index');
 		$config['total_rows'] = $this->blog_model->sGetNumPosts('1');
-		$config['per_page'] = '1';
+		$config['per_page'] = '3';
 		$config['uri_segment'] = 2;
 
 		$this->pagination->initialize($config); 
 		
 		//$data['previews'] = $this->blog_model->sGetPreviews(100, 0);
 		/*We are getting just 'blog' comments*/
-		$data['previews'] = $this->blog_model->sGetCategoryPreviews(array('id' => '1', 'clink' => 'blog'), $config['per_page'], $this->uri->segment(2));
+		$data['previews'] = $this->blog_model->sGetCategoryPreviews(array('id' => '1', 'clink' => 'blog'), $config['per_page'], $config['per_page']*(($this->uri->segment(2) == 0)?0:($this->uri->segment(2) - 1) ));
 		$categories = $this->blog_model->sGetCategories();
 		$members = $this->blog_model->sGetMembers();
 
@@ -45,12 +45,26 @@ class Herz extends MY_Controller {
 			show_404('page');
 	}
 
-	function _loadcategory($category){
+	function viewcategory(){
+		$category = $this->blog_model->sGetCategoryInfo($this->uri->segment(1));
+		$page = $this->_getpage($this->uri->segment(2));
+
+		$this->_loadcategory($category);
+	}
+
+	function _loadcategory($category, $offset){
+
+		$config['base_url'] = current_url();
+		$config['total_rows'] = $this->blog_model->sGetNumPosts('1');
+		$config['per_page'] = '3';
+		$config['uri_segment'] = 2;
+
+		$this->pagination->initialize($config);
 		
 		$data['categories'] = $this->blog_model->sGetCategories();
 		$members = $this->blog_model->sGetMembers();
 
-		$data['previews'] = $this->blog_model->sGetCategoryPreviews($category, 100, 0);
+		$data['previews'] = $this->blog_model->sGetCategoryPreviews($category, $config['per_page'], $offset*$config['per_page']);
 		$this->_get_info($categories, $members, $data['previews']);
 
 		$data['meta'] = $this->get_meta('index');
@@ -148,6 +162,7 @@ class Herz extends MY_Controller {
 	}
 
 	function _getpage($segment){
-		return preg_replace('/[^0-9]/',$segment, '');
+		if($segment == FALSE) return 1;
+		return preg_replace('/[^0-9]/','', $segment);
 	}
 }
