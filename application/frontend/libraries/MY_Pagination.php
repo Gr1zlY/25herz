@@ -47,9 +47,11 @@ Class MY_Pagination extends CI_Pagination
 		}
 		
 		// Determine the current page number.		
-		$CI =& get_instance();	
-		if ($CI->uri->segment($this->uri_segment) != 0)
+		$CI =& get_instance();
+		//echo $CI->uri->segment(1);
+		if ($CI->uri->segment($this->uri_segment) != FALSE)
 		{
+			//echo $CI->uri->segment(1);
 			$this->cur_page = preg_replace('/[^0-9]/','', $CI->uri->segment($this->uri_segment)); //deleting everything from page(:num) except numbers
 
 			// Prep the current page - no funny business!
@@ -65,13 +67,15 @@ Class MY_Pagination extends CI_Pagination
 				
 		if ( ! is_numeric($this->cur_page))
 		{
-			$this->cur_page = 1;
+			$this->cur_page =  1;
 		}
 		
 		// make sure cur_page is atleast 1
 		if ($this->cur_page < 1) {
 			$this->cur_page = 1;
-		} 
+		}
+
+		//echo $this->cur_page;
 
 		// Is the page number beyond the result range?
 		// If so we show the last page

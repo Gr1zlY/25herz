@@ -45,12 +45,12 @@ $route['scaffolding_trigger'] = '';
 
 
 $route['(:any)/page(:num)'] = "herz/viewcategory/$0/$1";
-$route['page(:num)'] = "herz/page/$0";
+$route['page(:num)'] = "herz/index/$0";
 $route['^(?!page[0-9]).*'] = "herz/$0";
 
 //$route['^(?!login).*'] = "herz/$0";
 
-$route['page[0-9]'] = "herz/page/$0";
+//$route['page[0-9]'] = "herz/page/$0";
 
 /* End of file routes.php */
 /* Location: ./system/application/config/routes.php */

@@ -22,7 +22,7 @@ class Herz extends MY_Controller {
 		
 		//$data['previews'] = $this->blog_model->sGetPreviews(100, 0);
 		/*We are getting just 'blog' comments*/
-		$data['previews'] = $this->blog_model->sGetCategoryPreviews(array('id' => '1', 'clink' => 'blog'), $config['per_page'], $config['per_page']*(($this->uri->segment(2) == 0)?0:($this->uri->segment(2) - 1) ));
+		$data['previews'] = $this->blog_model->sGetCategoryPreviews(array('id' => '1', 'clink' => 'blog'), $config['per_page'], $config['per_page']*$this->_getpage(2));
 		$categories = $this->blog_model->sGetCategories();
 		$members = $this->blog_model->sGetMembers();
 
@@ -54,7 +54,7 @@ class Herz extends MY_Controller {
 
 	function _loadcategory($category, $offset = 0){
 		
-		$config['base_url'] = current_url();
+		$config['base_url'] = site_url($category['clink']);
 		$config['total_rows'] = $this->blog_model->sGetNumPosts($category['id']);
 		$config['per_page'] = '2';
 		$config['uri_segment'] = 2;
@@ -162,6 +162,10 @@ class Herz extends MY_Controller {
 	}
 
 	function _getpage($segment){
+		
+		if(is_numeric($segment))
+			$segment = $this->uri->segment ($segment);
+		
 		if($segment == FALSE) return 0;
 		return (int)preg_replace('/[^0-9]/','', $segment) - 1;
 	}
