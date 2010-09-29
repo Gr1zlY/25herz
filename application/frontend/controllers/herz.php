@@ -6,7 +6,7 @@ class Herz extends MY_Controller {
 	{
 		parent::MY_Controller();
 
-				$this->load->library('pagination');
+		$this->load->library('pagination');
 
 	}
 	
@@ -33,51 +33,59 @@ class Herz extends MY_Controller {
 		$this->load->view('template', $data);
 	}
 	
-	function _loadpage($raw_category){
+	function _loadpagee($raw_category){
 		
 		$category = $this->blog_model->sGetCategoryInfo($raw_category);
 			
-		if($category != FALSE AND $this->uri->rsegment(3) == FALSE){
-
-			$categories = $this->blog_model->sGetCategories();
-			$members = $this->blog_model->sGetMembers();
-				
-			$data['previews'] = $this->blog_model->sGetCategoryPreviews($category, 100, 0);
-			$this->_get_info($categories, $members, $data['previews']);
-
-			$data['meta'] = $this->get_meta('index');
-			$data['page'] = 'blog/multiple';
-			$this->load->view('template', $data);
-
-		}
-		else if($category != FALSE AND $this->uri->rsegment(3) != FALSE){
-				
-				$members = $this->blog_model->sGetMembers();
-				$data = $this->blog_model->sGetPost($category['id'], $this->uri->rsegment(3));
-		
-				if($data != FALSE){
-
-					$this->load->model('comments_model');
-								
-					if($this->form_validation->run( ($this->session->userdata('logged_in') == TRUE)?'member_comment':'comment') == TRUE)
-						$this->comments_model->sCreateComment($data['id']);
-
-					$this->_get_member($members, $data, TRUE);
-
-					$data['captcha'] = $this->_create_captcha();
-					$data['comments'] = $this->comments_model->sGetComments($data['id']);
-			
-					$data['meta'] = $this->get_meta($data);
-					$data['page'] = 'blog/single';
-					$this->load->view('template', $data);
-				}
-				else{
-					show_404();
-				}
-		}
-		else {
+		if($category != FALSE AND $this->uri->rsegment(3) == FALSE)
+			$this->_loadcategory($category);
+		else if($category != FALSE AND $this->uri->rsegment(3) != FALSE)
+			$this->_loadpage($category, $this->uri->rsegment(3));
+		else 
 			show_404('page');
+	}
+
+	function _loadcategory($category){
+		
+		$data['categories'] = $this->blog_model->sGetCategories();
+		$members = $this->blog_model->sGetMembers();
+
+		$data['previews'] = $this->blog_model->sGetCategoryPreviews($category, 100, 0);
+		$this->_get_info($categories, $members, $data['previews']);
+
+		$data['meta'] = $this->get_meta('index');
+		$data['page'] = 'blog/multiple';
+		$this->load->view('template', $data);
+	}
+
+	function _loadpage($category, $id){
+
+		$members = $this->blog_model->sGetMembers();
+		$data = $this->blog_model->sGetPost($category['id'], $id);
+
+		if($data != FALSE){
+
+			$this->load->model('comments_model');
+
+			if($this->form_validation->run( ($this->session->userdata('logged_in') == TRUE)?'member_comment':'comment') == TRUE)
+				$this->comments_model->sCreateComment($data['id']);
+
+			$this->_get_member($members, $data, TRUE);
+
+			$data['captcha'] = $this->_create_captcha();
+			$data['comments'] = $this->comments_model->sGetComments($data['id']);
+
+			$data['meta'] = $this->get_meta($data);
+			$data['page'] = 'blog/single';
+			$this->load->view('template', $data);
 		}
+		else{
+			show_404();
+		}
+	}
+
+	function page(){
+		echo $this->_getpage($this->uri->segment(2));
 	}
 	
 	function _remap($method)
@@ -86,7 +94,7 @@ class Herz extends MY_Controller {
 			$this->$method();
 		}
 		else{
-			$this->_loadpage($method);
+			$this->_loadpagee($method);
 		}
 	}
 	
@@ -137,5 +145,9 @@ class Herz extends MY_Controller {
 			}
 		}
 		return FALSE;
+	}
+
+	function _getpage($segment){
+		return preg_replace('/[^0-9]/',$segment, '');
 	}
 }

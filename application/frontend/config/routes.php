@@ -40,12 +40,17 @@
 |
 */
 
-$route['default_controller'] = "Herz";
-$route['scaffolding_trigger'] = "scaf";
+$route['default_controller'] = 'Herz';
+$route['scaffolding_trigger'] = '';
 
-$route['^(?!ezstore|ezsell|login).*'] = "herz/$0";
 
-//$route['([a-z]+)/([a-z]+)'] = "herz/$1/$2";
+$route['(:any)/page[0-9]'] = "herz/page/$1";
+$route['page[0-9]'] = "herz/page/$0";
+$route['^(?!page[0-9]).*'] = "herz/$0";
+
+//$route['^(?!login).*'] = "herz/$0";
+
+$route['page[0-9]'] = "herz/page/$0";
 
 /* End of file routes.php */
 /* Location: ./system/application/config/routes.php */
