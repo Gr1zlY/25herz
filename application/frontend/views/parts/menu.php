@@ -4,7 +4,7 @@
 			<?php echo anchor($item['clink'], $item['ctitle']); ?>
 		</li>
 	<?php endforeach; ?>
-	<li>
+	<!--<li>
 		<a href="">О нас</a>
-	</li>
+	</li>-->
 </ul>
