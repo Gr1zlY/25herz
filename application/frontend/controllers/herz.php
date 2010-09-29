@@ -13,7 +13,7 @@ class Herz extends MY_Controller {
 	function index()
 	{
 
-		$config['base_url'] = site_url('index');
+		$config['base_url'] = site_url('');
 		$config['total_rows'] = $this->blog_model->sGetNumPosts('1');
 		$config['per_page'] = '3';
 		$config['uri_segment'] = 2;
@@ -49,14 +49,14 @@ class Herz extends MY_Controller {
 		$category = $this->blog_model->sGetCategoryInfo($this->uri->segment(1));
 		$page = $this->_getpage($this->uri->segment(2));
 
-		$this->_loadcategory($category);
+		$this->_loadcategory($category, $page);
 	}
 
-	function _loadcategory($category, $offset){
-
+	function _loadcategory($category, $offset = 0){
+		
 		$config['base_url'] = current_url();
-		$config['total_rows'] = $this->blog_model->sGetNumPosts('1');
-		$config['per_page'] = '3';
+		$config['total_rows'] = $this->blog_model->sGetNumPosts($category['id']);
+		$config['per_page'] = '2';
 		$config['uri_segment'] = 2;
 
 		$this->pagination->initialize($config);
@@ -162,7 +162,7 @@ class Herz extends MY_Controller {
 	}
 
 	function _getpage($segment){
-		if($segment == FALSE) return 1;
-		return preg_replace('/[^0-9]/','', $segment);
+		if($segment == FALSE) return 0;
+		return (int)preg_replace('/[^0-9]/','', $segment) - 1;
 	}
 }

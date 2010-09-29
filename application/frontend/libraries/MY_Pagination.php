@@ -50,8 +50,8 @@ Class MY_Pagination extends CI_Pagination
 		$CI =& get_instance();	
 		if ($CI->uri->segment($this->uri_segment) != 0)
 		{
-			$this->cur_page = $CI->uri->segment($this->uri_segment);
-			
+			$this->cur_page = preg_replace('/[^0-9]/','', $CI->uri->segment($this->uri_segment)); //deleting everything from page(:num) except numbers
+
 			// Prep the current page - no funny business!
 			$this->cur_page = (int) $this->cur_page;
 		}
@@ -89,7 +89,9 @@ Class MY_Pagination extends CI_Pagination
 		$end   = (($this->cur_page + $this->num_links) < $num_pages) ? $this->cur_page + $this->num_links : $num_pages;
 
 		// Add a trailing slash to the base URL if needed
-		$this->base_url = rtrim($this->base_url, '/') .'/';
+		//$this->base_url = rtrim($this->base_url, '/') .'/';
+		//$this->base_url = rtrim($this->base_url, '/'); // deleting last slash cause we do not need it
+		$this->base_url = rtrim($this->base_url, '/').'/page'; // deleting last slash cause we do not need it
 
   		// And here we go...
 		$output = '';
