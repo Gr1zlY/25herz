@@ -43,10 +43,11 @@ class Herz extends MY_Controller {
 			$members = $this->blog_model->sGetMembers();
 				
 			$data['previews'] = $this->blog_model->sGetCategoryPreviews($category, 100, 0);
-			$this->_get_info($categories, $members, $data['previews']);
+			$this->_get_info($data['categories'], $members, $data['previews']);
 
 			$data['meta'] = $this->get_meta('index');
 			$data['page'] = 'blog/multiple';
+			$data['category'] = $category;
 			$this->load->view('template', $data);
 
 		}
@@ -69,6 +70,7 @@ class Herz extends MY_Controller {
 			
 					$data['meta'] = $this->get_meta($data);
 					$data['page'] = 'blog/single';
+					$data['category'] = $category;
 					$this->load->view('template', $data);
 				}
 				else{
