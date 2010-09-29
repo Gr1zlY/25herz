@@ -76,6 +76,10 @@ h1, h2, li {
     z-index: 2;
 }
 
+#mainMenu li a:active {
+	color: #fff;
+}
+
 #content {
     float: left;
 }
