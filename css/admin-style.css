@@ -125,17 +125,31 @@ table.create-user td {
     padding: 5px;
 }
 
-table, tr, td {
-    margin: 0px;
-    padding: 0;
-}
-
 td {
     vertical-align: top;
 }
 
 td.name {
     text-align: right;
+}
+
+table label {
+	margin-left:5px;
+}
+
+.options h3 {
+	display:inline;
+}
+
+.options ul {
+	margin:0 0 0 5px;
+	padding:0;
+	display:inline;
+}
+
+.options li {
+	display:inline;
+	margin-right:10px;
 }
 
 form label {
@@ -156,6 +170,14 @@ form label {
 
 .post-body {
     height: 200px;
+}
+
+input.post-submit {
+    font-size: 22px;
+}
+
+#access-rights {
+	width:25px;
 }
 
 input.post-submit {
