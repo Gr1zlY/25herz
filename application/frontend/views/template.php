@@ -9,7 +9,7 @@
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$("#mainMenu li").corner("4px");
-				$(".meta span, input, textarea").corner("4px");	
+				$(".meta span, input, textarea, #pagination *").corner("4px");	
 			});
 		</script>
         <title><?php echo $meta['title']; ?></title>
