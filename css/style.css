@@ -201,8 +201,9 @@ ul.commentsList .commentsList {
 
 .commentForm #send {
     width: 80px;
-    background: #444;
     color: #fff;
+	background: #444;
+	cursor:pointer;
 }
 
 /* movie list */
@@ -263,6 +264,27 @@ ul.commentsList .commentsList {
 
 .movieInfo dd img {
     border: 0;
+}
+
+/* pagination */
+
+#pagination {
+	font-size:14px;
+}
+
+#pagination * {
+	padding:4px;
+	margin-right:6px;
+}
+
+#pagination a {
+	background: rgb(55, 55, 55);
+	color: rgb(181, 181, 181);
+	text-decoration:none;
+}
+
+#pagination span {
+	background: rgb(55, 55, 55);
 }
 
 /*additional info*/

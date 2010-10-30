@@ -41,11 +41,21 @@
 					</select>
 				</td>
 			</tr>
+			<tr class="options">
+				<td colspan=4>	
+					<h3>Options:</h3>
+					<ul>
+						<li><input id="is-draft" type="checkbox" ><label for="is-draft">draft</label></li>
+						<li><input id="allow-comments" type="checkbox" ><label for="allow-comments">allow comments</label></li>
+						<li><input id="access-rights" type="text"><label for="access-rights">access rights</label></li>
+					</ul>
+				</td>
+			</tr>
 		</table>
 		<h3>Text:</h3>
 		<?php echo form_textarea('preview','', 'class="post-body"'); ?>
-		<?php echo form_textarea('post', '', 'class="post-body"'); ?><br />
-
+		<?php echo form_textarea('post', '', 'class="post-body"'); ?>
+		<br>
 		<?php echo form_submit('submit', 'Post it!', 'class="post-submit"'); ?>
-	<?php echo form_close(); ?>
+		<?php echo form_close(); ?>
 </div>

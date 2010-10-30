@@ -12,11 +12,20 @@ class Herz extends MY_Controller {
 	
 	function index()
 	{
-
 		$config['base_url'] = site_url('index');
 		$config['total_rows'] = $this->blog_model->sGetNumPosts('1');
 		$config['per_page'] = '4';
 		$config['uri_segment'] = 2;
+		
+		$config['cur_tag_open'] = '<span>';
+		$config['cur_tag_close'] = '</span>';
+		
+		$config['first_tag_close']	= '';
+		$config['last_tag_open']	= '';
+		$config['next_tag_open']	= '';
+		$config['next_tag_close']	= '';
+		$config['prev_tag_open']	= '';
+		$config['num_tag_open']		= '';
 
 		$this->pagination->initialize($config); 
 		
