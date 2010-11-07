@@ -36,6 +36,16 @@
 					</select>
 				</td>
 			</tr>
+			<tr class="options">
+				<td colspan=4>
+					<h3>Options:</h3>
+					<ul>
+						<li><?php echo form_checkbox('draft', TRUE, $post['draft']);?><label for="draft">draft</label></li>
+						<li><?php echo  form_checkbox('disallow_comments', TRUE, $post['disallow_comments']);?><label for="allow-comments">disallow comments</label></li>
+						<!--<li><?php form_checkbox('','access right', FALSE);?><input id="access-rights" type="text"><label for="access-rights">access rights</label></li>-->
+					</ul>
+				</td>
+			</tr>
 		</table>
 		<h3>Text:</h3>
 		<?php echo form_textarea('preview', $post['preview'], 'class="post-body"'); ?>

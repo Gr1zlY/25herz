@@ -26,11 +26,9 @@ class Admin extends Controller {
 	
 	function editpost(){
 	
-		try{
-			$id = (int)$this->uri->segment(3);
+		$id = (int)$this->uri->segment(3);
 			
-			if($id == FALSE)
-				throw new Exception(404);
+		if($id != FALSE){
 				
 			if ($this->form_validation->run('post') != FALSE){
 				if($this->blog_model->aUpdatePost($id) != FALSE)
@@ -48,7 +46,7 @@ class Admin extends Controller {
 			$this->load->view('template', $data);
 			
 		}
-		catch(Exception $e){
+		else{
 			show_404('page');
 		}
 	}

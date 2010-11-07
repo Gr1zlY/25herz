@@ -45,9 +45,9 @@
 				<td colspan=4>	
 					<h3>Options:</h3>
 					<ul>
-						<li><input id="is-draft" type="checkbox" ><label for="is-draft">draft</label></li>
-						<li><input id="allow-comments" type="checkbox" ><label for="allow-comments">allow comments</label></li>
-						<li><input id="access-rights" type="text"><label for="access-rights">access rights</label></li>
+						<li><?php echo form_checkbox('draft', TRUE, FALSE);?><label for="draft">draft</label></li>
+						<li><?php echo  form_checkbox('disallow_comments', TRUE, FALSE);?><label for="allow-comments">disallow comments</label></li>
+						<!--<li><?php form_checkbox('','access right', FALSE);?><input id="access-rights" type="text"><label for="access-rights">access rights</label></li>-->
 					</ul>
 				</td>
 			</tr>

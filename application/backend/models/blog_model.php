@@ -9,7 +9,7 @@ class Blog_model extends Model {
 
 	function aGetPreviews($limit, $offset){
 	
-		$this->db->select('id, category, link, title, author, preview, time');
+		$this->db->select('id, category, link, title, author, preview, time, draft, disallow_comments');
 
 		$query = $this->db->get('blog', $limit, $offset);
 		
@@ -31,7 +31,9 @@ class Blog_model extends Model {
 			'post' => $this->input->post('post'),
 			'preview' => $this->input->post('preview'),
 			'author' =>$this->session->userdata('id'),
-			'time' => time()
+			'time' => time(),
+			'draft' => ($this->input->post('draft') != FALSE) ? TRUE : FALSE,
+			'disallow_comments' =>  ($this->input->post('allow_comments') != FALSE) ? TRUE : FALSE,
 		);
 		
 		$this->db->insert('blog', $post);
@@ -49,7 +51,9 @@ class Blog_model extends Model {
 			'link' => $this->input->post('link'),
 			'category' => $this->input->post('categories'),
 			'post' => $this->input->post('post'),
-			'preview' => $this->input->post('preview')
+			'preview' => $this->input->post('preview'),
+			'draft' => ($this->input->post('draft') != FALSE) ? TRUE : FALSE,
+			'disallow_comments' =>  ($this->input->post('allow_comments') != FALSE) ? TRUE : FALSE,
 		);
 		
 		$this->db->where('id', $id);		
@@ -73,7 +77,7 @@ class Blog_model extends Model {
 	
 	function aGetPost($id){
 	
-		$this->db->select('id, category, link, title, author, preview, post, meta_tags, meta_description');
+		$this->db->select('id, category, link, title, author, preview, post, meta_tags, meta_description, draft, disallow_comments');
 		$this->db->where('id', $id);
 
 		$this->db->limit(1);
