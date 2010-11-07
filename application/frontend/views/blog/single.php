@@ -9,5 +9,9 @@
 			<?php echo $post; ?>
 		</div>				
 	</div>
-	<?php $this->load->view('comments/comments'); ?>
+	
+	<?php if($disallow_comments == FALSE):?>
+		<?php $this->load->view('comments/comments'); ?>
+	<?php endif;?>
+	
 </div>

@@ -9,7 +9,7 @@ class Blog_model extends Model {
 
 	function sGetPreviews($limit, $offset){
 	
-		$this->db->select('id, link, title, author, preview, time, category, comments_qty');
+		$this->db->select('id, link, title, author, preview, time, category, comments_qty, disallow_comments');
 		$this->db->where('draft', FALSE);
 
 		$this->db->order_by('time', 'desc');		
@@ -24,7 +24,7 @@ class Blog_model extends Model {
 
 	function sGetCategoryPreviews($category, $limit, $offset){
 	
-		$this->db->select('id, link, title, author, preview, time, category, comments_qty');
+		$this->db->select('id, link, title, author, preview, time, category, comments_qty, disallow_comments');
 		$this->db->where('category', $category['id']);
 		$this->db->where('draft', FALSE);
 		
@@ -62,7 +62,7 @@ class Blog_model extends Model {
 	
 	function sGetPost($category, $link){
 	
-		$this->db->select('id, title, author, preview, post, time, meta_tags, meta_description');
+		$this->db->select('id, title, author, preview, post, time, meta_tags, meta_description, disallow_comments');
 		$this->db->where('category', $category);
 		$this->db->where('draft', FALSE);
 		

@@ -67,16 +67,19 @@ class Herz extends MY_Controller {
 		
 				if($data != FALSE){
 
-					$this->load->model('comments_model');
-								
-					if($this->form_validation->run( ($this->session->userdata('logged_in') == TRUE)?'member_comment':'comment') == TRUE)
-						$this->comments_model->sCreateComment($data['id']);
+					if($data['disallow_comments'] == FALSE){
 
-					$this->_get_member($members, $data, TRUE);
+						$this->load->model('comments_model');
 
-					$data['captcha'] = $this->_create_captcha();
-					$data['comments'] = $this->comments_model->sGetComments($data['id']);
-			
+						if($this->form_validation->run( ($this->session->userdata('logged_in') == TRUE)?'member_comment':'comment') == TRUE)
+							$this->comments_model->sCreateComment($data['id']);
+
+						$this->_get_member($members, $data, TRUE);
+
+						$data['captcha'] = $this->_create_captcha();
+						$data['comments'] = $this->comments_model->sGetComments($data['id']);
+					}
+					
 					$data['meta'] = $this->get_meta($data);
 					$data['page'] = 'blog/single';
 					$data['category'] = $category;

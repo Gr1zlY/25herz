@@ -33,7 +33,7 @@ class Blog_model extends Model {
 			'author' =>$this->session->userdata('id'),
 			'time' => time(),
 			'draft' => ($this->input->post('draft') != FALSE) ? TRUE : FALSE,
-			'disallow_comments' =>  ($this->input->post('allow_comments') != FALSE) ? TRUE : FALSE,
+			'disallow_comments' =>  ($this->input->post('disallow_comments') != FALSE) ? TRUE : FALSE,
 		);
 		
 		$this->db->insert('blog', $post);
@@ -53,7 +53,7 @@ class Blog_model extends Model {
 			'post' => $this->input->post('post'),
 			'preview' => $this->input->post('preview'),
 			'draft' => ($this->input->post('draft') != FALSE) ? TRUE : FALSE,
-			'disallow_comments' =>  ($this->input->post('allow_comments') != FALSE) ? TRUE : FALSE,
+			'disallow_comments' =>  ($this->input->post('disallow_comments') != FALSE) ? TRUE : FALSE,
 		);
 		
 		$this->db->where('id', $id);		
